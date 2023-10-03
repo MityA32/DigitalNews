@@ -10,7 +10,6 @@
 		9317416D2ACC572E003AE7F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9317416C2ACC572E003AE7F2 /* AppDelegate.swift */; };
 		9317416F2ACC572E003AE7F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9317416E2ACC572E003AE7F2 /* SceneDelegate.swift */; };
 		931741712ACC572E003AE7F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931741702ACC572E003AE7F2 /* ViewController.swift */; };
-		931741742ACC572E003AE7F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 931741722ACC572E003AE7F2 /* Main.storyboard */; };
 		931741772ACC572E003AE7F2 /* DigitalNews.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 931741752ACC572E003AE7F2 /* DigitalNews.xcdatamodeld */; };
 		931741792ACC5730003AE7F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 931741782ACC5730003AE7F2 /* Assets.xcassets */; };
 		9317417C2ACC5730003AE7F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9317417A2ACC5730003AE7F2 /* LaunchScreen.storyboard */; };
@@ -21,7 +20,6 @@
 		9317416C2ACC572E003AE7F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9317416E2ACC572E003AE7F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		931741702ACC572E003AE7F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		931741732ACC572E003AE7F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		931741762ACC572E003AE7F2 /* DigitalNews.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DigitalNews.xcdatamodel; sourceTree = "<group>"; };
 		931741782ACC5730003AE7F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9317417B2ACC5730003AE7F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,16 +56,63 @@
 		9317416B2ACC572E003AE7F2 /* DigitalNews */ = {
 			isa = PBXGroup;
 			children = (
-				9317416C2ACC572E003AE7F2 /* AppDelegate.swift */,
-				9317416E2ACC572E003AE7F2 /* SceneDelegate.swift */,
-				931741702ACC572E003AE7F2 /* ViewController.swift */,
-				931741722ACC572E003AE7F2 /* Main.storyboard */,
-				931741782ACC5730003AE7F2 /* Assets.xcassets */,
-				9317417A2ACC5730003AE7F2 /* LaunchScreen.storyboard */,
-				9317417D2ACC5730003AE7F2 /* Info.plist */,
-				931741752ACC572E003AE7F2 /* DigitalNews.xcdatamodeld */,
+				931741872ACC5A16003AE7F2 /* Resources */,
+				931741852ACC5A02003AE7F2 /* Modules */,
+				931741842ACC59DF003AE7F2 /* DatabaseModel */,
+				931741832ACC5954003AE7F2 /* Application */,
 			);
 			path = DigitalNews;
+			sourceTree = "<group>";
+		};
+		931741832ACC5954003AE7F2 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				9317417D2ACC5730003AE7F2 /* Info.plist */,
+				9317416C2ACC572E003AE7F2 /* AppDelegate.swift */,
+				9317416E2ACC572E003AE7F2 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		931741842ACC59DF003AE7F2 /* DatabaseModel */ = {
+			isa = PBXGroup;
+			children = (
+				931741752ACC572E003AE7F2 /* DigitalNews.xcdatamodeld */,
+			);
+			path = DatabaseModel;
+			sourceTree = "<group>";
+		};
+		931741852ACC5A02003AE7F2 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				931741882ACC5A29003AE7F2 /* MainScreen */,
+				931741862ACC5A0A003AE7F2 /* LaunchScreen */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		931741862ACC5A0A003AE7F2 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				9317417A2ACC5730003AE7F2 /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		931741872ACC5A16003AE7F2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				931741782ACC5730003AE7F2 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		931741882ACC5A29003AE7F2 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				931741702ACC572E003AE7F2 /* ViewController.swift */,
+			);
+			path = MainScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,7 +175,6 @@
 			files = (
 				9317417C2ACC5730003AE7F2 /* LaunchScreen.storyboard in Resources */,
 				931741792ACC5730003AE7F2 /* Assets.xcassets in Resources */,
-				931741742ACC572E003AE7F2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,14 +195,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		931741722ACC572E003AE7F2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				931741732ACC572E003AE7F2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9317417A2ACC5730003AE7F2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -293,7 +329,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 57CXKABA7X;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DigitalNews/Info.plist;
+				INFOPLIST_FILE = DigitalNews/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -321,7 +357,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 57CXKABA7X;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DigitalNews/Info.plist;
+				INFOPLIST_FILE = DigitalNews/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
