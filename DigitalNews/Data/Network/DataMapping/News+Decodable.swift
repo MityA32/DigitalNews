@@ -11,8 +11,12 @@ struct NewsModel: Decodable {
     let articles: [PieceOfNewsModel]
 }
 
-struct PieceOfNewsModel: Decodable, Identifiable {
-    let id = UUID()
+struct ID<T>: Equatable {
+    private let value = UUID()
+}
+
+struct PieceOfNewsModel: Decodable {
+    let id = ID<Self>()
     let source: SourceModel?
     let author: String?
     let title: String?
@@ -31,7 +35,6 @@ struct PieceOfNewsModel: Decodable, Identifiable {
         case publishedAt
     }
 }
-
 
 struct SourceModel: Decodable {
     let name: String?

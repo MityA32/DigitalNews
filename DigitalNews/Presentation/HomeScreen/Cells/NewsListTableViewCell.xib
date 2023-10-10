@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoO-Ji-Pjq" userLabel="Title">
-                        <rect key="frame" x="16" y="16" width="388" height="44"/>
+                        <rect key="frame" x="16" y="16" width="344" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="Dmg-Ng-TSJ"/>
                         </constraints>
@@ -65,21 +65,28 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="oi5-4w-nBL">
+                        <rect key="frame" x="368" y="15.666666666666668" width="36" height="39.666666666666657"/>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="oi5-4w-nBL" firstAttribute="leading" secondItem="xoO-Ji-Pjq" secondAttribute="trailing" constant="8" id="0ic-i1-hLc"/>
                     <constraint firstAttribute="trailing" secondItem="XMw-QE-PE0" secondAttribute="trailing" constant="16" id="1yB-iZ-QJE"/>
                     <constraint firstItem="lw9-GY-rgo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="2n2-O5-LDw"/>
                     <constraint firstItem="xoO-Ji-Pjq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="484-GW-OlZ"/>
-                    <constraint firstAttribute="trailing" secondItem="xoO-Ji-Pjq" secondAttribute="trailing" constant="16" id="53W-po-h4e"/>
+                    <constraint firstAttribute="trailing" secondItem="xoO-Ji-Pjq" secondAttribute="trailing" constant="60" id="53W-po-h4e"/>
                     <constraint firstAttribute="bottom" secondItem="9al-50-KZL" secondAttribute="bottom" constant="16" id="7cV-bp-jqd"/>
                     <constraint firstItem="lw9-GY-rgo" firstAttribute="top" secondItem="xoO-Ji-Pjq" secondAttribute="bottom" constant="4" id="8xZ-lu-n4d"/>
                     <constraint firstItem="dqQ-Uv-iAP" firstAttribute="top" secondItem="lw9-GY-rgo" secondAttribute="bottom" constant="32" id="CJ9-Y7-eWT"/>
+                    <constraint firstItem="oi5-4w-nBL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="FWb-mK-iY7"/>
+                    <constraint firstItem="lw9-GY-rgo" firstAttribute="top" secondItem="oi5-4w-nBL" secondAttribute="bottom" constant="8" id="MFD-mO-hbM"/>
                     <constraint firstAttribute="trailing" secondItem="9al-50-KZL" secondAttribute="trailing" constant="16" id="MiL-v4-yOC"/>
                     <constraint firstAttribute="trailing" secondItem="lw9-GY-rgo" secondAttribute="trailing" constant="16" id="Nz6-58-e00"/>
                     <constraint firstAttribute="trailing" secondItem="dqQ-Uv-iAP" secondAttribute="trailing" constant="16" id="Svt-Wj-A9y"/>
                     <constraint firstItem="9al-50-KZL" firstAttribute="top" secondItem="EwK-Yp-fxF" secondAttribute="bottom" constant="16" id="W4i-92-WS5"/>
                     <constraint firstItem="dqQ-Uv-iAP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Xqh-y7-YRU"/>
                     <constraint firstItem="EwK-Yp-fxF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Ynm-7Z-FWz"/>
+                    <constraint firstAttribute="trailing" secondItem="oi5-4w-nBL" secondAttribute="trailing" constant="16" id="iuk-GA-IfE"/>
                     <constraint firstItem="xoO-Ji-Pjq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="nQW-WV-iVL"/>
                     <constraint firstItem="EwK-Yp-fxF" firstAttribute="top" secondItem="XMw-QE-PE0" secondAttribute="bottom" constant="4" id="uXH-D3-pUy"/>
                     <constraint firstItem="9al-50-KZL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="wXY-pf-xWP"/>
@@ -100,4 +107,7 @@
             <point key="canvasLocation" x="35.114503816793892" y="170.42253521126761"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="star" catalog="system" width="128" height="116"/>
+    </resources>
 </document>

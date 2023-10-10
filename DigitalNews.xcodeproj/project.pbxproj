@@ -22,9 +22,17 @@
 		935213D02ACC843600911781 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935213CF2ACC843600911781 /* UIViewController+Extension.swift */; };
 		935213D32ACC87C700911781 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935213D22ACC87C700911781 /* NibLoadable.swift */; };
 		935213D62ACC915C00911781 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935213D52ACC915C00911781 /* HomeScreenViewModel.swift */; };
-		93C6B6CA2AD57BAC0055C162 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6C92AD57BAC0055C162 /* Fetcher.swift */; };
-		93C6B6CD2AD57C130055C162 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6CC2AD57C130055C162 /* DataFetcher.swift */; };
 		93C6B6D02AD57F640055C162 /* News+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6CF2AD57F640055C162 /* News+Decodable.swift */; };
+		93C6B6D32AD5A33B0055C162 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6D22AD5A33B0055C162 /* CoreDataService.swift */; };
+		93C6B6D72AD5A3C50055C162 /* CoreDatabaseServiceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6D62AD5A3C50055C162 /* CoreDatabaseServiceable.swift */; };
+		93C6B6DB2AD5ADB10055C162 /* NewsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6DA2AD5ADB10055C162 /* NewsRepository.swift */; };
+		93C6B6DD2AD5B9800055C162 /* AlamoNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6DC2AD5B9800055C162 /* AlamoNetworking.swift */; };
+		93C6B6DF2AD5BA7E0055C162 /* NetworkRequestBodyConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6DE2AD5BA7E0055C162 /* NetworkRequestBodyConvertible.swift */; };
+		93C6B6E12AD5BACC0055C162 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6E02AD5BACC0055C162 /* Endpoint.swift */; };
+		93C6B6E32AD5CA3B0055C162 /* AlamoNetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6E22AD5CA3B0055C162 /* AlamoNetworkingProtocol.swift */; };
+		93C6B6E52AD5CF010055C162 /* NewsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6E42AD5CF010055C162 /* NewsEndpoint.swift */; };
+		93C6B6E72AD5D5640055C162 /* GetNewsInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6E62AD5D5640055C162 /* GetNewsInstruction.swift */; };
+		93C6B6E92AD5D96B0055C162 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6E82AD5D96B0055C162 /* APIKeys.swift */; };
 		F80683D1D3105C2CAB7FC8F3 /* Pods_DigitalNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5F19C3E1E6D4D2CEDF218F /* Pods_DigitalNews.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,9 +56,17 @@
 		935213CF2ACC843600911781 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		935213D22ACC87C700911781 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		935213D52ACC915C00911781 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
-		93C6B6C92AD57BAC0055C162 /* Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
-		93C6B6CC2AD57C130055C162 /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 		93C6B6CF2AD57F640055C162 /* News+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "News+Decodable.swift"; sourceTree = "<group>"; };
+		93C6B6D22AD5A33B0055C162 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		93C6B6D62AD5A3C50055C162 /* CoreDatabaseServiceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDatabaseServiceable.swift; sourceTree = "<group>"; };
+		93C6B6DA2AD5ADB10055C162 /* NewsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRepository.swift; sourceTree = "<group>"; };
+		93C6B6DC2AD5B9800055C162 /* AlamoNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamoNetworking.swift; sourceTree = "<group>"; };
+		93C6B6DE2AD5BA7E0055C162 /* NetworkRequestBodyConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestBodyConvertible.swift; sourceTree = "<group>"; };
+		93C6B6E02AD5BACC0055C162 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		93C6B6E22AD5CA3B0055C162 /* AlamoNetworkingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamoNetworkingProtocol.swift; sourceTree = "<group>"; };
+		93C6B6E42AD5CF010055C162 /* NewsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsEndpoint.swift; sourceTree = "<group>"; };
+		93C6B6E62AD5D5640055C162 /* GetNewsInstruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNewsInstruction.swift; sourceTree = "<group>"; };
+		93C6B6E82AD5D96B0055C162 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		A0D165E124CFFE81F8B1AD0A /* Pods-DigitalNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigitalNews.release.xcconfig"; path = "Target Support Files/Pods-DigitalNews/Pods-DigitalNews.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,8 +126,9 @@
 		931741842ACC59DF003AE7F2 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				93C6B6D82AD5AC170055C162 /* Repository */,
+				93C6B6D42AD5A3900055C162 /* Database */,
 				93C6B6C72AD57B890055C162 /* Network */,
-				935213DC2ACCBFF600911781 /* DataModel */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -209,6 +226,7 @@
 				935213D42ACC8EE600911781 /* Services */,
 				935213D12ACC878700911781 /* Protocols */,
 				935213CE2ACC841E00911781 /* Exentions */,
+				93C6B6E82AD5D96B0055C162 /* APIKeys.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -273,7 +291,9 @@
 		93C6B6C82AD57B950055C162 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				93C6B6C92AD57BAC0055C162 /* Fetcher.swift */,
+				93C6B6DE2AD5BA7E0055C162 /* NetworkRequestBodyConvertible.swift */,
+				93C6B6E02AD5BACC0055C162 /* Endpoint.swift */,
+				93C6B6E22AD5CA3B0055C162 /* AlamoNetworkingProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -281,7 +301,7 @@
 		93C6B6CB2AD57BF80055C162 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				93C6B6CC2AD57C130055C162 /* DataFetcher.swift */,
+				93C6B6DC2AD5B9800055C162 /* AlamoNetworking.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -290,8 +310,52 @@
 			isa = PBXGroup;
 			children = (
 				93C6B6CF2AD57F640055C162 /* News+Decodable.swift */,
+				93C6B6E42AD5CF010055C162 /* NewsEndpoint.swift */,
+				93C6B6E62AD5D5640055C162 /* GetNewsInstruction.swift */,
 			);
 			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		93C6B6D12AD5A3290055C162 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				93C6B6D22AD5A33B0055C162 /* CoreDataService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		93C6B6D42AD5A3900055C162 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				935213DC2ACCBFF600911781 /* DataModel */,
+				93C6B6D52AD5A39B0055C162 /* Protocols */,
+				93C6B6D12AD5A3290055C162 /* Services */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		93C6B6D52AD5A39B0055C162 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				93C6B6D62AD5A3C50055C162 /* CoreDatabaseServiceable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		93C6B6D82AD5AC170055C162 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				93C6B6D92AD5AD990055C162 /* News */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		93C6B6D92AD5AD990055C162 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				93C6B6DA2AD5ADB10055C162 /* NewsRepository.swift */,
+			);
+			path = News;
 			sourceTree = "<group>";
 		};
 		97EE44164851F3AAFC681E34 /* Frameworks */ = {
@@ -428,18 +492,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93C6B6E32AD5CA3B0055C162 /* AlamoNetworkingProtocol.swift in Sources */,
+				93C6B6D32AD5A33B0055C162 /* CoreDataService.swift in Sources */,
 				930021F32ACD9BDC00A88CA0 /* NewsModel.swift in Sources */,
-				93C6B6CA2AD57BAC0055C162 /* Fetcher.swift in Sources */,
+				93C6B6DF2AD5BA7E0055C162 /* NetworkRequestBodyConvertible.swift in Sources */,
 				931741712ACC572E003AE7F2 /* HomeScreenViewController.swift in Sources */,
-				93C6B6CD2AD57C130055C162 /* DataFetcher.swift in Sources */,
 				9317416D2ACC572E003AE7F2 /* AppDelegate.swift in Sources */,
 				935213D62ACC915C00911781 /* HomeScreenViewModel.swift in Sources */,
 				93C6B6D02AD57F640055C162 /* News+Decodable.swift in Sources */,
+				93C6B6DD2AD5B9800055C162 /* AlamoNetworking.swift in Sources */,
+				93C6B6E92AD5D96B0055C162 /* APIKeys.swift in Sources */,
 				9317416F2ACC572E003AE7F2 /* SceneDelegate.swift in Sources */,
+				93C6B6E52AD5CF010055C162 /* NewsEndpoint.swift in Sources */,
 				935213D32ACC87C700911781 /* NibLoadable.swift in Sources */,
+				93C6B6E12AD5BACC0055C162 /* Endpoint.swift in Sources */,
 				935159972ACDBF6E00458601 /* NewsListTableViewCell.swift in Sources */,
 				935213D02ACC843600911781 /* UIViewController+Extension.swift in Sources */,
+				93C6B6DB2AD5ADB10055C162 /* NewsRepository.swift in Sources */,
+				93C6B6D72AD5A3C50055C162 /* CoreDatabaseServiceable.swift in Sources */,
 				931741772ACC572E003AE7F2 /* DigitalNews.xcdatamodeld in Sources */,
+				93C6B6E72AD5D5640055C162 /* GetNewsInstruction.swift in Sources */,
 				935159922ACDBE2B00458601 /* CustomNavigationBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

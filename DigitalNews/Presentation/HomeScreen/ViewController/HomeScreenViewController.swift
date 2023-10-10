@@ -9,12 +9,14 @@ import UIKit
 
 final class HomeScreenViewController: UIViewController {
     
-    
-    @IBOutlet weak var customNavigationBarView: CustomNavigationBarView!
+    @IBOutlet private weak var customNavigationBarView: CustomNavigationBarView!
     @IBOutlet private weak var newsListTableView: UITableView!
+    
+    private let homeScreenViewModel = HomeScreenViewModel(newsRepository: NewsRepository())
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setup()
     }
     
@@ -30,7 +32,7 @@ final class HomeScreenViewController: UIViewController {
 
 extension HomeScreenViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
