@@ -7,4 +7,5 @@ target 'DigitalNews' do
 
   # Pods for DigitalNews
   pod 'Alamofire'
+  pod 'SDWebImage'
 end

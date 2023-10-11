@@ -12,6 +12,7 @@ final class AlamoNetworking: AlamoNetworkingProtocol {
 
     private var host: String
     private var headers: [String : String]
+    let queue = DispatchQueue(label: "com.queue.\(AlamoNetworking.self)")
     
     init(_ hostString: String, headers: [String : String] = [:]) {
         self.host = hostString
@@ -25,18 +26,21 @@ final class AlamoNetworking: AlamoNetworkingProtocol {
         of type: ObjectType.Type,
         completion: @escaping (Result<ObjectType?, AFError>) -> Void
     ) {
-        AF
-        .request(
-            composeRequest(host + "\(endpoint.pathComponent)", parameters),
-            method: method,
-            parameters: parameters.parameters,
-            headers: HTTPHeaders(headers)
-        )
-        .responseDecodable(of: ObjectType.self) { response in
-            if let error = response.error {
-                completion(.failure(error))
-            } else {
-                completion(.success(response.value))
+        queue.async { [weak self] in
+            guard let self else { return }
+            AF
+            .request(
+                composeRequest(host + "\(endpoint.pathComponent)", parameters),
+                method: method,
+                parameters: parameters.parameters,
+                headers: HTTPHeaders(headers)
+            )
+            .responseDecodable(of: ObjectType.self) { response in
+                if let error = response.error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(response.value))
+                }
             }
         }
     }
@@ -47,6 +51,7 @@ final class AlamoNetworking: AlamoNetworkingProtocol {
     ) -> String {
         var urlComps = URLComponents(string: host)!
         urlComps.queryItems = parameters.queryItems
+
         return urlComps.url?.absoluteString ?? ""
     }
 

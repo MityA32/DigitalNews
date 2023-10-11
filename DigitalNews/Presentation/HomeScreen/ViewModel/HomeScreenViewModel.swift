@@ -8,16 +8,41 @@
 import Foundation
 
 final class HomeScreenViewModel {
-    let newsRepository: NewsRepository
+    
+    enum NewsListType {
+        case latest
+        case saved
+    }
+    
+    private let newsRepository: NewsRepository
+    
+    private(set) var news = [PieceOfNewsModel]()
+    
+    var currentNewsListType: NewsListType = .latest
+    var currentTopic = "popular"
+    var currentPageNumber = 0
+    
+    var savedNews: [PieceOfNews] { newsRepository.savedNews }
     
     init(newsRepository: NewsRepository) {
         self.newsRepository = newsRepository
-        newsRepository.getPortion(topic: "popular", pageNumber: 1) {
+    }
+    
+    func loadMore(for topic: String, completion: @escaping (Result<[PieceOfNewsModel], Error>) -> Void) {
+        if topic != currentTopic {
+            currentPageNumber = 0
+        }
+        newsRepository.getPortion(topic: topic, pageNumber: currentPageNumber + 1) { [weak self] in
             switch $0 {
             case .success(let data):
-                print(data)
+                self?.news.append(contentsOf: data)
+                
+                self?.currentTopic = topic
+                self?.currentPageNumber += 1
+                
+                completion(.success(data))
             case .failure(let error):
-                print(error.localizedDescription)
+                completion(.failure(error))
             }
         }
     }

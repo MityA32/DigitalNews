@@ -9,6 +9,7 @@ import Foundation
 import CoreData
 
 final class CoreDataService: CoreDataServiceProtocol {
+
     static let containerName = "DigitalNews"
     
     lazy private var container: NSPersistentContainer = {
@@ -16,6 +17,7 @@ final class CoreDataService: CoreDataServiceProtocol {
         container.loadPersistentStores { _, error in }
         container.viewContext.automaticallyMergesChangesFromParent = true
         container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+
         return container
     }()
     
@@ -25,6 +27,7 @@ final class CoreDataService: CoreDataServiceProtocol {
     func create<T: NSManagedObject>(_ type: T.Type, _ handler: ((T) -> Void)?) -> T {
         let newObject = T(context: context)
         handler?(newObject)
+
         return newObject
     }
     
@@ -45,4 +48,5 @@ final class CoreDataService: CoreDataServiceProtocol {
     func delete(_ object: NSManagedObject) {
         context.delete(object)
     }
+
 }

@@ -9,6 +9,7 @@ import Foundation
 import Alamofire
 
 protocol AlamoNetworkingProtocol {
+
     func perform<T: Endpoint, ObjectType: Decodable>(
         _ method: HTTPMethod,
         _ endpoint: T,
@@ -16,4 +17,5 @@ protocol AlamoNetworkingProtocol {
         of type: ObjectType.Type,
         completion: @escaping (Result<ObjectType?, AFError>) -> ()
     )
+
 }

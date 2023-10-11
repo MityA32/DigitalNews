@@ -16,6 +16,7 @@ struct ID<T>: Equatable {
 }
 
 struct PieceOfNewsModel: Decodable {
+    
     let id = ID<Self>()
     let source: SourceModel?
     let author: String?
@@ -34,6 +35,7 @@ struct PieceOfNewsModel: Decodable {
         case urlToImage
         case publishedAt
     }
+    
 }
 
 struct SourceModel: Decodable {
