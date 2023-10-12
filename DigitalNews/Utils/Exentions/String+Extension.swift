@@ -19,4 +19,8 @@ extension String {
         dateFormatter.locale = Locale(identifier: "en_US")
         return dateFormatter.string(from: date ?? Date())
     }
+    
+    var countryName: String {
+        Locale(identifier: "en_US").localizedString(forRegionCode: self) ?? "--"
+    }
 }

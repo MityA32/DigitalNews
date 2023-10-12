@@ -9,42 +9,52 @@ import Foundation
 
 final class HomeScreenViewModel {
     
-    enum NewsListType {
-        case latest
-        case saved
-    }
-    
     private let newsRepository: NewsRepository
     
     private(set) var news = [PieceOfNewsModel]()
     
-    var currentNewsListType: NewsListType = .latest
     var currentTopic = "popular"
     var currentPageNumber = 0
+    var selectedCategory: NewsCategory = .any
+    var selectedCountry: NewsCountry = .any
+    var selectedSources: [NewsSource] = []
     
-    var savedNews: [PieceOfNews] { newsRepository.savedNews }
+    var favouriteNews: [PieceOfNews] { newsRepository.favouriteNews }
     
     init(newsRepository: NewsRepository) {
         self.newsRepository = newsRepository
     }
     
-    func loadMore(for topic: String, completion: @escaping (Result<[PieceOfNewsModel], Error>) -> Void) {
+    func loadMore(for topic: String = "popular", completion: @escaping (Result<[PieceOfNewsModel], Error>) -> Void) {
         if topic != currentTopic {
             currentPageNumber = 0
         }
-        newsRepository.getPortion(topic: topic, pageNumber: currentPageNumber + 1) { [weak self] in
+        let sources = selectedSources.isEmpty ? "" : selectedSources.map { $0.id }.joined(separator: ", ")
+        let topic = sources.isEmpty ? topic : ""
+        newsRepository.getEverythingPortion(topic: topic, sources: sources, pageNumber: currentPageNumber + 1) { [weak self] in
+            guard let self else { return }
             switch $0 {
             case .success(let data):
-                self?.news.append(contentsOf: data)
+                if currentPageNumber == 0 {
+                    news = data
+                } else {
+                    news.append(contentsOf: data)
+                }
                 
-                self?.currentTopic = topic
-                self?.currentPageNumber += 1
+                currentTopic = topic
+                currentPageNumber += 1
                 
-                completion(.success(data))
+                completion(.success(news))
             case .failure(let error):
+                print("loadMore: \(error.localizedDescription)")
                 completion(.failure(error))
             }
         }
+    }
+    
+    func refreshNews(completion: @escaping (Result<[PieceOfNewsModel], Error>) -> Void) {
+        currentPageNumber = 0
+        loadMore(for: currentTopic, completion: completion)
     }
     
 }

@@ -9,13 +9,15 @@ import Foundation
 
 protocol NewsRepositoryProtocol {
     
-    var savedNews: [PieceOfNews] { get }
-    func getPortion(
+    var favouriteNews: [PieceOfNews] { get }
+    func getEverythingPortion(
         topic: String,
+        sources: String,
         from startDate: Date?,
         to endDate: Date?,
+        sortBy: String,
         pageNumber: Int,
-        completion: @escaping (Result<[PieceOfNews], Error>) -> Void
+        completion: @escaping (Result<[PieceOfNewsModel], Error>) -> Void
     )
     
 }

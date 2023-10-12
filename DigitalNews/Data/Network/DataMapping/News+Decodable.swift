@@ -15,7 +15,7 @@ struct ID<T>: Equatable {
     private let value = UUID()
 }
 
-struct PieceOfNewsModel: Decodable {
+struct PieceOfNewsModel: Decodable, Equatable {
     
     let id = ID<Self>()
     let source: SourceModel?
@@ -36,8 +36,18 @@ struct PieceOfNewsModel: Decodable {
         case publishedAt
     }
     
+    static func ==(lhs: PieceOfNewsModel, rhs: PieceOfNewsModel) -> Bool {
+        return lhs.source == rhs.source &&
+               lhs.author == rhs.author &&
+               lhs.title == rhs.title &&
+               lhs.description == rhs.description &&
+               lhs.url == rhs.url &&
+               lhs.urlToImage == rhs.urlToImage &&
+               lhs.publishedAt == rhs.publishedAt
+    }
+    
 }
 
-struct SourceModel: Decodable {
+struct SourceModel: Decodable, Equatable {
     let name: String?
 }

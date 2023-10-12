@@ -10,6 +10,7 @@ import Foundation
 enum NewsEndpoint: String, Endpoint {
     
     case everything = "/v2/everything"
+    case sources = "/v2/top-headlines/sources"
     
     var pathComponent: String {
         rawValue

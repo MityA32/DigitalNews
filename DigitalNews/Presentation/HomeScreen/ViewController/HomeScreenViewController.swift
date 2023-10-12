@@ -9,20 +9,34 @@ import UIKit
 
 final class HomeScreenViewController: UIViewController {
     
-    @IBOutlet private weak var customNavigationBarView: CustomNavigationBarView!
+    @IBOutlet private weak var newsSearchBar: UISearchBar!
     @IBOutlet private weak var newsListTableView: UITableView!
+    
+    private let refreshControl = UIRefreshControl()
+    private let filterButton = UIButton()
     
     private let viewModel = HomeScreenViewModel(newsRepository: NewsRepository())
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setup()
     }
     
     private func setup() {
+        navigationController?.isNavigationBarHidden = false
+        title = "News"
+        setupSearhBar()
+        setupRefreshControl()
         setupTableView()
-        
+        setupFilterButton()
+    }
+    
+    private func setupSearhBar() {
+        newsSearchBar.delegate = self
+    }
+    
+    private func setupRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(refreshNews), for: .primaryActionTriggered)
     }
     
     private func setupTableView() {
@@ -30,45 +44,68 @@ final class HomeScreenViewController: UIViewController {
         newsListTableView.dataSource = self
         newsListTableView.registerCell(NewsListTableViewCell.self)
         newsListTableView.rowHeight = UITableView.automaticDimension
-        viewModel.loadMore(for: "popular") { [weak self] _ in
+        newsListTableView.refreshControl = refreshControl
+        viewModel.loadMore() { [weak self] _ in
             self?.newsListTableView.reloadData()
         }
     }
+    
+    private func setupFilterButton() {
+        filterButton.setImage(UIImage(systemName: "line.3.horizontal.decrease.circle"), for: .normal)
+        filterButton.addTarget(self, action: #selector(openFiltersScreen), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: filterButton)
+    }
+    
+    @objc
+    func refreshNews() {
+        viewModel.refreshNews { [weak self] _ in
+            self?.newsListTableView.reloadData()
+            self?.refreshControl.endRefreshing()
+        }
+    }
+    
+    @objc
+    func openFiltersScreen() {
+        let filtersScreen = NewsFiltersScreenViewController.instantiateFromNib()
+        filtersScreen.selectedCategory = viewModel.selectedCategory
+        filtersScreen.selectedCountry = viewModel.selectedCountry
+        filtersScreen.transferFilterDataDelegate = self
+        navigationController?.pushViewController(filtersScreen, animated: false)
+    }
+}
+
+extension HomeScreenViewController: UISearchBarDelegate {
+    
 }
 
 extension HomeScreenViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch viewModel.currentNewsListType {
-            case .latest:
-                viewModel.news.count
-            case .saved:
-                viewModel.savedNews.count
-        }
+        viewModel.news.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = newsListTableView.dequeueReusableCell(withIdentifier: NewsListTableViewCell.id, for: indexPath) as! NewsListTableViewCell
+
         cell.selectionStyle = .none
-        switch viewModel.currentNewsListType {
-            case .latest:
-                cell.config(from: viewModel.news[indexPath.row])
-            case .saved:
-                cell.configSaved(from: viewModel.savedNews[indexPath.row])
-        }
-        
+        cell.config(from: viewModel.news[indexPath.row])
+
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let webViewController = PieceOfNewsWebViewController.instantiateFromNib()
-        switch viewModel.currentNewsListType {
-            case .latest:
-                webViewController.url = URL(string: viewModel.news[indexPath.row].url ?? "")
-            case .saved:
-                webViewController.url = viewModel.savedNews[indexPath.row].url
-        }
+        webViewController.url = URL(string: viewModel.news[indexPath.row].url ?? "")
         navigationController?.pushViewController(webViewController, animated: true)
     }
     
-    
+}
+
+extension HomeScreenViewController: NewsFilterDataTransferDelegate {
+    func transferNewsFilterData(category: NewsCategory, country: NewsCountry, sources: [NewsSource]) {
+        viewModel.selectedCategory = category
+        viewModel.selectedCountry = country
+        viewModel.selectedSources = sources
+        refreshNews()
+        navigationController?.popViewController(animated: true)
+    }
 }

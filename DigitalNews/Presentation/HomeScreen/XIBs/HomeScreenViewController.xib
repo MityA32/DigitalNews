@@ -11,8 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeScreenViewController" customModule="DigitalNews" customModuleProvider="target">
             <connections>
-                <outlet property="customNavigationBarView" destination="v0V-HZ-o1R" id="SFA-sx-dLP"/>
                 <outlet property="newsListTableView" destination="hVY-AJ-OmN" id="Yrc-WH-i63"/>
+                <outlet property="newsSearchBar" destination="JDj-gi-0vP" id="lO0-3m-cDD"/>
                 <outlet property="view" destination="iN0-l3-epB" id="mzK-sY-agd"/>
             </connections>
         </placeholder>
@@ -21,28 +21,28 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v0V-HZ-o1R" customClass="CustomNavigationBarView" customModule="DigitalNews" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="j6R-mR-Fw5"/>
-                    </constraints>
-                </view>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="JDj-gi-0vP">
+                    <rect key="frame" x="0.0" y="59" width="393" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="Iik-9J-wwV"/>
+                    </connections>
+                </searchBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hVY-AJ-OmN">
-                    <rect key="frame" x="0.0" y="103" width="393" height="749"/>
+                    <rect key="frame" x="0.0" y="115" width="393" height="737"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemIndigoColor"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="JDj-gi-0vP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="2Xy-o1-Y0L"/>
                 <constraint firstAttribute="bottom" secondItem="hVY-AJ-OmN" secondAttribute="bottom" id="K4Y-fk-j9U"/>
                 <constraint firstItem="hVY-AJ-OmN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="KMV-7J-Nld"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="v0V-HZ-o1R" secondAttribute="trailing" id="O8d-Xl-knS"/>
+                <constraint firstItem="hVY-AJ-OmN" firstAttribute="top" secondItem="JDj-gi-0vP" secondAttribute="bottom" id="N14-4y-88Q"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hVY-AJ-OmN" secondAttribute="trailing" id="TFg-Ev-EBH"/>
-                <constraint firstItem="v0V-HZ-o1R" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Ukh-LP-heS"/>
-                <constraint firstItem="hVY-AJ-OmN" firstAttribute="top" secondItem="v0V-HZ-o1R" secondAttribute="bottom" id="jXn-W0-5fz"/>
-                <constraint firstItem="v0V-HZ-o1R" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="lOK-vC-Yjn"/>
+                <constraint firstItem="JDj-gi-0vP" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="gUH-9J-HTo"/>
+                <constraint firstItem="JDj-gi-0vP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="z8a-wi-qKw"/>
             </constraints>
             <point key="canvasLocation" x="138" y="20"/>
         </view>
@@ -50,9 +50,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

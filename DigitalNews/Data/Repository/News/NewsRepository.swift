@@ -7,39 +7,42 @@
 
 import Foundation
 
-final class NewsRepository {
+final class NewsRepository: NewsRepositoryProtocol {
     
     private let coredataService: CoreDataServiceProtocol
     private let networkService: AlamoNetworkingProtocol
     
-    private(set) var savedNews: [PieceOfNews]
+    private(set) var favouriteNews: [PieceOfNews]
     
     init(
         coredataService: CoreDataServiceProtocol = CoreDataService(),
-        networkService: AlamoNetworkingProtocol = AlamoNetworking("https://newsapi.org")
+        networkService: AlamoNetworkingProtocol = AlamoNetworking("https://newsapi.org", headers: NewsApi.headers)
     ) {
         self.coredataService = coredataService
         self.networkService = networkService
-        savedNews = coredataService.fetch(PieceOfNews.self)
+        favouriteNews = coredataService.fetch(PieceOfNews.self)
     }
 
-    func getPortion(
+    func getEverythingPortion(
         topic: String,
-        sortBy: String = "publishedAt",
+        sources: String = "",
         from startDate: Date? = nil,
         to endDate: Date? = nil,
+        sortBy: String = "publishedAt",
         pageNumber: Int,
         completion: @escaping (Result<[PieceOfNewsModel], Error>) -> Void
     ) {
         networkService.perform(
             .get,
             NewsEndpoint.everything,
-            GetNewsInstruction(q: topic, sortBy: sortBy, page: "\(pageNumber)"),
+            GetNewsInstruction(q: topic, sources: sources, sortBy: sortBy, page: "\(pageNumber)"),
             of: NewsModel.self
-        ) { result in
+        ) { [weak self] result in
+            guard let self else { return }
             switch result {
             case .success(let data):
                 if let articles = data?.articles {
+                    favouriteNews = coredataService.fetch(PieceOfNews.self)
                     
                     completion(.success(articles.filter { $0.title != "[Removed]" }))
                 } else {
@@ -51,28 +54,27 @@ final class NewsRepository {
         }
     }
     
-    func save(_ newPieceOfNews: PieceOfNews) {
+    func save(_ newPieceOfNews: PieceOfNewsModel) {
         coredataService.write {
-//            newPieceOfNews
-//            let pieceOfNews = coredataService.create(PieceOfNews.self) { pieceOfNews in
-//
-//                pieceOfNews.title = newPieceOfNews.title
-//                pieceOfNews.publishedAt = newPieceOfNews.publishedAt
-//                pieceOfNews.author = newPieceOfNews.author
-//                pieceOfNews.source = newPieceOfNews.source
-//                pieceOfNews.newsDescription = newPieceOfNews.description
-//                pieceOfNews.url = newPieceOfNews.url
-//                pieceOfNews.urlToImage = newPieceOfNews.urlToImage
-//
-//            }
-            savedNews.append(newPieceOfNews)
+            let pieceOfNews = coredataService.create(PieceOfNews.self) { pieceOfNews in
+
+                pieceOfNews.title = newPieceOfNews.title
+                pieceOfNews.publishedAt = newPieceOfNews.publishedAt?.formattedFromISO8601()
+                pieceOfNews.author = newPieceOfNews.author
+                pieceOfNews.source = newPieceOfNews.source?.name
+                pieceOfNews.newsDescription = newPieceOfNews.description
+                pieceOfNews.url = URL(string: newPieceOfNews.url ?? "")
+                pieceOfNews.urlToImage = URL(string: newPieceOfNews.urlToImage ?? "")
+
+            }
+            favouriteNews.append(pieceOfNews)
         }
     }
     
     func delete(_ pieceOfNews: PieceOfNews) {
         coredataService.delete(pieceOfNews)
-        if let index = savedNews.firstIndex(of: pieceOfNews) {
-            savedNews.remove(at: index)
+        if let index = favouriteNews.firstIndex(of: pieceOfNews) {
+            favouriteNews.remove(at: index)
         }
     }
 }
