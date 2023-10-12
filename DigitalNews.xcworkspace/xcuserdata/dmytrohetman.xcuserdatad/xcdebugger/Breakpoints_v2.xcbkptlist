@@ -266,8 +266,8 @@
             filePath = "DigitalNews/Presentation/HomeScreen/ViewModel/HomeScreenViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "remove(_:)"
             landmarkType = "7">
             <Locations>
@@ -314,8 +314,8 @@
             filePath = "DigitalNews/Presentation/HomeScreen/ViewModel/HomeScreenViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "remove(_:)"
             landmarkType = "7">
             <Locations>

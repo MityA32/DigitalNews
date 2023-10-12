@@ -160,7 +160,7 @@ extension HomeScreenViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         debounceTimer?.invalidate()
         debounceTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { [weak self] _ in
-            self?.viewModel.currentTopic = searchText
+            self?.viewModel.refreshCurrentTopicAfterSearch(searchText)
             self?.refreshNews()
         }
     }

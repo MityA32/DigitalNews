@@ -63,6 +63,10 @@ final class HomeScreenViewModel {
         loadMore(for: currentTopic, completion: completion)
     }
     
+    func refreshCurrentTopicAfterSearch(_ searchText: String) {
+        currentTopic = sources.isEmpty && selectedSources.isEmpty && searchText.isEmpty ? "popular" : searchText
+    }
+    
     func save(_ pieceOfNews: PieceOfNewsModel) {
         newsRepository.save(pieceOfNews)
         if let index = news.firstIndex(where: { $0 == pieceOfNews }) {
