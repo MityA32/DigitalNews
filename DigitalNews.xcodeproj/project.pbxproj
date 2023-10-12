@@ -14,14 +14,16 @@
 		931741772ACC572E003AE7F2 /* DigitalNews.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 931741752ACC572E003AE7F2 /* DigitalNews.xcdatamodeld */; };
 		931741792ACC5730003AE7F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 931741782ACC5730003AE7F2 /* Assets.xcassets */; };
 		9317417C2ACC5730003AE7F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9317417A2ACC5730003AE7F2 /* LaunchScreen.storyboard */; };
-		935159922ACDBE2B00458601 /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935159912ACDBE2B00458601 /* CustomNavigationBarView.swift */; };
-		935159942ACDBE4B00458601 /* CustomNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 935159932ACDBE4B00458601 /* CustomNavigationBarView.xib */; };
+		933C32012AD852BC007020C2 /* FavouriteNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933C31FF2AD852BC007020C2 /* FavouriteNewsViewController.swift */; };
+		933C32022AD852BC007020C2 /* FavouriteNewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933C32002AD852BC007020C2 /* FavouriteNewsViewController.xib */; };
 		935159972ACDBF6E00458601 /* NewsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935159952ACDBF6E00458601 /* NewsListTableViewCell.swift */; };
 		935159982ACDBF6E00458601 /* NewsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 935159962ACDBF6E00458601 /* NewsListTableViewCell.xib */; };
 		935213CC2ACC7D6200911781 /* HomeScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 935213CB2ACC7D6200911781 /* HomeScreenViewController.xib */; };
 		935213D02ACC843600911781 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935213CF2ACC843600911781 /* UIViewController+Extension.swift */; };
 		935213D32ACC87C700911781 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935213D22ACC87C700911781 /* NibLoadable.swift */; };
 		935213D62ACC915C00911781 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935213D52ACC915C00911781 /* HomeScreenViewModel.swift */; };
+		939FDAB72AD874D100755BAE /* AddFavouritePieceOfNewsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939FDAB62AD874D100755BAE /* AddFavouritePieceOfNewsDelegate.swift */; };
+		939FDAB92AD8754100755BAE /* FavouriteNewsScreenDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939FDAB82AD8754100755BAE /* FavouriteNewsScreenDelegate.swift */; };
 		93C6B6D02AD57F640055C162 /* News+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6CF2AD57F640055C162 /* News+Decodable.swift */; };
 		93C6B6D32AD5A33B0055C162 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6D22AD5A33B0055C162 /* CoreDataService.swift */; };
 		93C6B6D72AD5A3C50055C162 /* CoreDatabaseServiceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6D62AD5A3C50055C162 /* CoreDatabaseServiceable.swift */; };
@@ -67,14 +69,16 @@
 		931741782ACC5730003AE7F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9317417B2ACC5730003AE7F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9317417D2ACC5730003AE7F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		935159912ACDBE2B00458601 /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
-		935159932ACDBE4B00458601 /* CustomNavigationBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomNavigationBarView.xib; sourceTree = "<group>"; };
+		933C31FF2AD852BC007020C2 /* FavouriteNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteNewsViewController.swift; sourceTree = "<group>"; };
+		933C32002AD852BC007020C2 /* FavouriteNewsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouriteNewsViewController.xib; sourceTree = "<group>"; };
 		935159952ACDBF6E00458601 /* NewsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListTableViewCell.swift; sourceTree = "<group>"; };
 		935159962ACDBF6E00458601 /* NewsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListTableViewCell.xib; sourceTree = "<group>"; };
 		935213CB2ACC7D6200911781 /* HomeScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeScreenViewController.xib; sourceTree = "<group>"; };
 		935213CF2ACC843600911781 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		935213D22ACC87C700911781 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		935213D52ACC915C00911781 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
+		939FDAB62AD874D100755BAE /* AddFavouritePieceOfNewsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavouritePieceOfNewsDelegate.swift; sourceTree = "<group>"; };
+		939FDAB82AD8754100755BAE /* FavouriteNewsScreenDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteNewsScreenDelegate.swift; sourceTree = "<group>"; };
 		93C6B6CF2AD57F640055C162 /* News+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "News+Decodable.swift"; sourceTree = "<group>"; };
 		93C6B6D22AD5A33B0055C162 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		93C6B6D62AD5A3C50055C162 /* CoreDatabaseServiceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDatabaseServiceable.swift; sourceTree = "<group>"; };
@@ -175,9 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				93C6B70D2AD7138D0055C162 /* FiltersScreen */,
-				93C6B6F82AD624DA0055C162 /* FavouriteNewsScreen */,
 				93C6B6F12AD61EFD0055C162 /* PieceOfNewsWebView */,
-				9351598F2ACDBDEB00458601 /* CustomNavigationBar */,
+				93C6B6F82AD624DA0055C162 /* FavouriteNewsScreen */,
 				931741882ACC5A29003AE7F2 /* HomeScreen */,
 				931741862ACC5A0A003AE7F2 /* LaunchScreen */,
 			);
@@ -208,23 +211,6 @@
 				935213C62ACC7D0200911781 /* ViewController */,
 			);
 			path = HomeScreen;
-			sourceTree = "<group>";
-		};
-		9351598F2ACDBDEB00458601 /* CustomNavigationBar */ = {
-			isa = PBXGroup;
-			children = (
-				935159902ACDBE0500458601 /* View */,
-			);
-			path = CustomNavigationBar;
-			sourceTree = "<group>";
-		};
-		935159902ACDBE0500458601 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				935159912ACDBE2B00458601 /* CustomNavigationBarView.swift */,
-				935159932ACDBE4B00458601 /* CustomNavigationBarView.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		935213C62ACC7D0200911781 /* ViewController */ = {
@@ -287,6 +273,8 @@
 			children = (
 				935213D22ACC87C700911781 /* NibLoadable.swift */,
 				93C6B71F2AD779A00055C162 /* NewsFilterDataTransferDelegate.swift */,
+				939FDAB62AD874D100755BAE /* AddFavouritePieceOfNewsDelegate.swift */,
+				939FDAB82AD8754100755BAE /* FavouriteNewsScreenDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -453,6 +441,7 @@
 		93C6B6F92AD624F90055C162 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				933C31FF2AD852BC007020C2 /* FavouriteNewsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -460,6 +449,7 @@
 		93C6B6FA2AD625070055C162 /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				933C32002AD852BC007020C2 /* FavouriteNewsViewController.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -616,10 +606,10 @@
 				93C6B7252AD77A510055C162 /* NewsSourcesTableViewCell.xib in Resources */,
 				935213CC2ACC7D6200911781 /* HomeScreenViewController.xib in Resources */,
 				93C6B7142AD713CC0055C162 /* NewsFiltersScreenViewController.xib in Resources */,
+				933C32022AD852BC007020C2 /* FavouriteNewsViewController.xib in Resources */,
 				9317417C2ACC5730003AE7F2 /* LaunchScreen.storyboard in Resources */,
 				931741792ACC5730003AE7F2 /* Assets.xcassets in Resources */,
 				93C6B6F72AD61F3A0055C162 /* PieceOfNewsWebViewController.xib in Resources */,
-				935159942ACDBE4B00458601 /* CustomNavigationBarView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,12 +675,14 @@
 				93C6B6DD2AD5B9800055C162 /* AlamoNetworking.swift in Sources */,
 				93C6B70C2AD7110D0055C162 /* Sources+Decodable.swift in Sources */,
 				93C6B6E92AD5D96B0055C162 /* APIKeys.swift in Sources */,
+				939FDAB92AD8754100755BAE /* FavouriteNewsScreenDelegate.swift in Sources */,
 				9317416F2ACC572E003AE7F2 /* SceneDelegate.swift in Sources */,
 				93C6B7182AD714EC0055C162 /* SourcesRepository.swift in Sources */,
 				93C6B6F62AD61F3A0055C162 /* PieceOfNewsWebViewController.swift in Sources */,
 				93C6B7242AD77A510055C162 /* NewsSourcesTableViewCell.swift in Sources */,
 				93C6B7042AD70C320055C162 /* GetSourcesInstruction.swift in Sources */,
 				93C6B6E52AD5CF010055C162 /* NewsEndpoint.swift in Sources */,
+				933C32012AD852BC007020C2 /* FavouriteNewsViewController.swift in Sources */,
 				93C6B6EB2AD5FC8F0055C162 /* String+Extension.swift in Sources */,
 				935213D32ACC87C700911781 /* NibLoadable.swift in Sources */,
 				93C6B6E12AD5BACC0055C162 /* Endpoint.swift in Sources */,
@@ -707,7 +699,7 @@
 				93C6B71D2AD71BD50055C162 /* NewsFilterProtocol.swift in Sources */,
 				93C6B71A2AD716500055C162 /* SourcesRepositoryProtocol.swift in Sources */,
 				93C6B6E72AD5D5640055C162 /* GetNewsInstruction.swift in Sources */,
-				935159922ACDBE2B00458601 /* CustomNavigationBarView.swift in Sources */,
+				939FDAB72AD874D100755BAE /* AddFavouritePieceOfNewsDelegate.swift in Sources */,
 				93C6B6F02AD607BE0055C162 /* UITableView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

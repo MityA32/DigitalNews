@@ -14,6 +14,6 @@ protocol CoreDataServiceProtocol {
     func saveContext()
     func write(_ handler: () -> Void)
     func fetch<T: NSManagedObject>(_ type: T.Type) -> [T]
-    func delete(_ object: NSManagedObject)
+    func remove(_ object: NSManagedObject)
 
 }

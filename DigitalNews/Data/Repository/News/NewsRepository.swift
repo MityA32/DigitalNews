@@ -43,8 +43,26 @@ final class NewsRepository: NewsRepositoryProtocol {
             case .success(let data):
                 if let articles = data?.articles {
                     favouriteNews = coredataService.fetch(PieceOfNews.self)
+                    let news = articles
+                        .filter { $0.title != "[Removed]" }
+                        .map { originalPieceOfNews in
+                            var newPieceOfNews = originalPieceOfNews
+                            if self.favouriteNews.first(where: {
+                                $0.title == newPieceOfNews.title &&
+                                $0.publishedAt == newPieceOfNews.publishedAt?.formattedFromISO8601() &&
+                                $0.url == URL(string: newPieceOfNews.url ?? "") &&
+                                $0.source == newPieceOfNews.source?.name &&
+                                $0.newsDescription == newPieceOfNews.description
+                            }) != nil {
+                                newPieceOfNews.isFavourite = true
+                            } else {
+                                newPieceOfNews.isFavourite = false
+                            }
+                            return newPieceOfNews
+                        }
                     
-                    completion(.success(articles.filter { $0.title != "[Removed]" }))
+                    
+                    completion(.success(news))
                 } else {
                     completion(.success([]))
                 }
@@ -71,10 +89,24 @@ final class NewsRepository: NewsRepositoryProtocol {
         }
     }
     
-    func delete(_ pieceOfNews: PieceOfNews) {
-        coredataService.delete(pieceOfNews)
-        if let index = favouriteNews.firstIndex(of: pieceOfNews) {
-            favouriteNews.remove(at: index)
+    func remove(_ pieceOfNews: PieceOfNewsModel) {
+        if let favouritePieceOfNews = coredataService.fetch(PieceOfNews.self).first(where: {
+            $0.title == pieceOfNews.title &&
+            $0.publishedAt == pieceOfNews.publishedAt?.formattedFromISO8601() &&
+            $0.url == URL(string: pieceOfNews.url ?? "") &&
+            $0.source == pieceOfNews.source?.name
+        }) {
+            coredataService.write {
+                coredataService.remove(favouritePieceOfNews)
+            }
+            favouriteNews = coredataService.fetch(PieceOfNews.self)
+        }
+    }
+    
+    func remove(_ pieceOfNews: PieceOfNews) {
+        coredataService.write {
+            coredataService.remove(pieceOfNews)
+            favouriteNews = coredataService.fetch(PieceOfNews.self)
         }
     }
 }

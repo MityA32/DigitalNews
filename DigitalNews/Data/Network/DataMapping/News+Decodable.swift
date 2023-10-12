@@ -25,6 +25,7 @@ struct PieceOfNewsModel: Decodable, Equatable {
     let url: String?
     let urlToImage: String?
     let publishedAt: String?
+    var isFavourite = false
     
     private enum CodingKeys: CodingKey {
         case source

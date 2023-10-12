@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class PieceOfNewsWebViewController: UIViewController {
+final class PieceOfNewsWebViewController: UIViewController {
 
     @IBOutlet private weak var webView: WKWebView!
     let activityIndicator = UIActivityIndicatorView()

@@ -126,6 +126,7 @@
                 <outlet property="authorLabel" destination="XMw-QE-PE0" id="Jum-nR-seu"/>
                 <outlet property="dateLabel" destination="lw9-GY-rgo" id="kCB-i7-iJj"/>
                 <outlet property="descriptionLabel" destination="9al-50-KZL" id="lOk-R9-wR5"/>
+                <outlet property="isFavouriteImageView" destination="oi5-4w-nBL" id="J3I-4I-PRA"/>
                 <outlet property="pieceOfNewsImageView" destination="dqQ-Uv-iAP" id="44B-Tt-dkm"/>
                 <outlet property="sourceLabel" destination="EwK-Yp-fxF" id="TpV-io-O2Y"/>
                 <outlet property="titleLabel" destination="xoO-Ji-Pjq" id="hgI-bj-fPv"/>
@@ -136,7 +137,7 @@
     <resources>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

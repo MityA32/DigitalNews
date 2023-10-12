@@ -14,6 +14,7 @@ final class HomeScreenViewController: UIViewController {
     
     private let refreshControl = UIRefreshControl()
     private let filterButton = UIButton()
+    private let favouriteButton = UIButton()
     
     private let activityIndicator = { 
         let activityIndicator = UIActivityIndicatorView(style: .medium)
@@ -40,6 +41,7 @@ final class HomeScreenViewController: UIViewController {
         setupRefreshControl()
         setupTableView()
         setupFilterButton()
+        setupFavouriteButton()
     }
     
     private func setupSearhBar() {
@@ -56,7 +58,6 @@ final class HomeScreenViewController: UIViewController {
         newsListTableView.delegate = self
         newsListTableView.dataSource = self
         newsListTableView.registerCell(NewsListTableViewCell.self)
-        newsListTableView.register(LoadingCell.self, forCellReuseIdentifier: "LoadingCell")
         newsListTableView.rowHeight = UITableView.automaticDimension
         newsListTableView.refreshControl = refreshControl
         newsListTableView.separatorStyle = .none
@@ -95,14 +96,33 @@ final class HomeScreenViewController: UIViewController {
         ])
     }
     
+    private func setupActivityIndicatorForPagination() -> UITableViewCell {
+        let cell = UITableViewCell()
+        activityIndicator.startAnimating()
+        cell.contentView.addSubview(activityIndicator)
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            activityIndicator.widthAnchor.constraint(equalToConstant: 50),
+            activityIndicator.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        return cell
+    }
+    
     private func setupFilterButton() {
         filterButton.setImage(UIImage(systemName: "line.3.horizontal.decrease.circle"), for: .normal)
         filterButton.addTarget(self, action: #selector(openFiltersScreen), for: .touchUpInside)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: filterButton)
     }
     
+    private func setupFavouriteButton() {
+        favouriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        favouriteButton.addTarget(self, action: #selector(openFavouriteScreen), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favouriteButton)
+    }
+    
     @objc
-    func refreshNews() {
+    private func refreshNews() {
         viewModel.refreshNews { [weak self] result in
             switch result {
             case .success(let data):
@@ -117,7 +137,7 @@ final class HomeScreenViewController: UIViewController {
     }
     
     @objc
-    func openFiltersScreen() {
+    private func openFiltersScreen() {
         let filtersScreen = NewsFiltersScreenViewController.instantiateFromNib()
         filtersScreen.selectedCategory = viewModel.selectedCategory
         filtersScreen.selectedCountry = viewModel.selectedCountry
@@ -126,23 +146,28 @@ final class HomeScreenViewController: UIViewController {
         filtersScreen.transferFilterDataDelegate = self
         navigationController?.pushViewController(filtersScreen, animated: false)
     }
+    
+    @objc
+    private func openFavouriteScreen() {
+        let favouriteScreen = FavouriteNewsViewController.instantiateFromNib()
+        favouriteScreen.delegate = self
+        favouriteScreen.favouriteNews = viewModel.favouriteNews
+        navigationController?.pushViewController(favouriteScreen, animated: true)
+    }
 }
 
 extension HomeScreenViewController: UISearchBarDelegate {
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         debounceTimer?.invalidate()
         debounceTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { [weak self] _ in
             self?.viewModel.currentTopic = searchText
             self?.refreshNews()
         }
-        
     }
-    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
-
 }
 
 extension HomeScreenViewController: UITableViewDelegate, UITableViewDataSource {
@@ -154,19 +179,12 @@ extension HomeScreenViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row < viewModel.news.count - 1 {
             let cell = newsListTableView.dequeueReusableCell(withIdentifier: NewsListTableViewCell.id, for: indexPath) as! NewsListTableViewCell
             cell.selectionStyle = .none
+            cell.addDelegate = self
+            cell.removeDelegate = self
             cell.config(from: viewModel.news[indexPath.row])
             return cell
         } else {
-            let cell = UITableViewCell()
-            activityIndicator.startAnimating()
-            cell.contentView.addSubview(activityIndicator)
-            NSLayoutConstraint.activate([
-                activityIndicator.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
-                activityIndicator.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-                activityIndicator.widthAnchor.constraint(equalToConstant: 50),
-                activityIndicator.heightAnchor.constraint(equalToConstant: 50)
-            ])
-            return cell
+            return setupActivityIndicatorForPagination()
         }
     }
     
@@ -207,23 +225,21 @@ extension HomeScreenViewController: NewsFilterDataTransferDelegate {
     }
 }
 
-
-class LoadingCell: UITableViewCell {
-    
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureUI()
+extension HomeScreenViewController: AddFavouritePieceOfNewsDelegate {
+    func addFavourite(_ pieceOfNews: PieceOfNewsModel) {
+        viewModel.save(pieceOfNews)
     }
+}
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        configureUI()
+extension HomeScreenViewController: RemoveFavouritePieceOfNewsDelegate {
+    func removeFavourite(_ pieceOfNews: PieceOfNewsModel) {
+        viewModel.remove(pieceOfNews)
     }
+}
 
-    private func configureUI() {
-        
+extension HomeScreenViewController: FavouriteNewsScreenDelegate {
+    func remove(_ pieceOfNews: PieceOfNews) {
+        viewModel.remove(pieceOfNews)
+        newsListTableView.reloadData()
     }
-    
-    
 }

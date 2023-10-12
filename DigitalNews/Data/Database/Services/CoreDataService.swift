@@ -45,7 +45,7 @@ final class CoreDataService: CoreDataServiceProtocol {
         (try? context.fetch(type.fetchRequest()) as? [T]) ?? []
     }
     
-    func delete(_ object: NSManagedObject) {
+    func remove(_ object: NSManagedObject) {
         context.delete(object)
     }
 

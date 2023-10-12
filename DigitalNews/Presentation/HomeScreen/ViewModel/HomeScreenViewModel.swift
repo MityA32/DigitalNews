@@ -63,4 +63,30 @@ final class HomeScreenViewModel {
         loadMore(for: currentTopic, completion: completion)
     }
     
+    func save(_ pieceOfNews: PieceOfNewsModel) {
+        newsRepository.save(pieceOfNews)
+        if let index = news.firstIndex(where: { $0 == pieceOfNews }) {
+            news[index].isFavourite = true
+        }
+    }
+    
+    func remove(_ pieceOfNews: PieceOfNewsModel) {
+        newsRepository.remove(pieceOfNews)
+        if let index = news.firstIndex(where: { $0 == pieceOfNews }) {
+            news[index].isFavourite = false
+        }
+    }
+    
+    func remove(_ pieceOfNews: PieceOfNews) {
+        if let index = news.firstIndex(where: {
+            $0.title == pieceOfNews.title &&
+            $0.publishedAt?.formattedFromISO8601() == pieceOfNews.publishedAt &&
+            URL(string: $0.url ?? "") == pieceOfNews.url &&
+            $0.source?.name == pieceOfNews.source
+        }) {
+            news[index].isFavourite = false
+        }
+        newsRepository.remove(pieceOfNews)
+    }
+    
 }

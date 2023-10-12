@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewsSourcesTableViewCell: UITableViewCell {
+final class NewsSourcesTableViewCell: UITableViewCell {
     static let id = "\(NewsSourcesTableViewCell.self)"
     
     @IBOutlet private weak var sourceLabel: UILabel!
