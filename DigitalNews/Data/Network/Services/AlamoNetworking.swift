@@ -51,7 +51,7 @@ final class AlamoNetworking: AlamoNetworkingProtocol {
     ) -> String {
         var urlComps = URLComponents(string: host)!
         urlComps.queryItems = parameters.queryItems
-
+        print(urlComps.url?.absoluteString ?? "")
         return urlComps.url?.absoluteString ?? ""
     }
 

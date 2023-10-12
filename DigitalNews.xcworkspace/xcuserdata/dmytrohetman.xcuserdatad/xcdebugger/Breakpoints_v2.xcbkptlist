@@ -7,39 +7,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9ACE646A-1B3C-4828-86BB-D4AE32D1A9CA"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DigitalNews/Presentation/FiltersScreen/ViewModel/NewsFiltersScreenViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "getSources(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4E92E25C-6546-4AA2-A28B-73325328E87F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DigitalNews/Presentation/FiltersScreen/ViewController/NewsFiltersScreenViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "back(sender:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "860ED760-1359-4743-9829-D62DD9F45A0C"
+            uuid = "1A4E3A94-33D2-46CE-AD04-115C6CBAC4B8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -55,17 +23,129 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "17BBCBF5-788F-4E4B-9174-82C664128356"
+            uuid = "4B41E848-44B1-4FC7-B11B-218021188E16"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DigitalNews/Presentation/FiltersScreen/ViewController/NewsFiltersScreenViewController.swift"
+            filePath = "DigitalNews/Presentation/FiltersScreen/ViewModel/NewsFiltersScreenViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "selectCountry()"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "getSources(completion:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "71B318D9-3645-4039-870F-2F6ABE3AAA8A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalNews/Data/Repository/News/SourcesRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "getSources(category:country:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "65C953F1-13AC-49A5-BF51-7003B12BEAFD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalNews/Data/Network/Services/AlamoNetworking.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "composeRequest(_:_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "65C953F1-13AC-49A5-BF51-7003B12BEAFD - fcae18d04bfb0bb1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DigitalNews.AlamoNetworking.composeRequest(Swift.String, DigitalNews.NetworkRequestBodyConvertible) -&gt; Swift.String"
+                  moduleName = "DigitalNews"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmytrohetman/projects/DigitalNews/DigitalNews/Data/Network/Services/AlamoNetworking.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "992">
+               </Location>
+               <Location
+                  uuid = "65C953F1-13AC-49A5-BF51-7003B12BEAFD - fcae18d04bfb0bb1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DigitalNews.AlamoNetworking.composeRequest(Swift.String, DigitalNews.NetworkRequestBodyConvertible) -&gt; Swift.String"
+                  moduleName = "DigitalNews"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmytrohetman/projects/DigitalNews/DigitalNews/Data/Network/Services/AlamoNetworking.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "1908">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "66ACF2A4-7E96-4994-BA17-3542C7B61F3E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DigitalNews/Data/Repository/News/SourcesRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "getSources(category:country:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "66ACF2A4-7E96-4994-BA17-3542C7B61F3E - 762959ba7af95eb8"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Optional&lt;DigitalNews.SourcesModel&gt;, Alamofire.AFError&gt;) -&gt; () in DigitalNews.SourcesRepository.getSources(category: Swift.String, country: Swift.String, completion: (Swift.Result&lt;Swift.Array&lt;DigitalNews.NewsSource&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "DigitalNews"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmytrohetman/projects/DigitalNews/DigitalNews/Data/Repository/News/SourcesRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "508">
+               </Location>
+               <Location
+                  uuid = "66ACF2A4-7E96-4994-BA17-3542C7B61F3E - 13737d9be944ef1e"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (DigitalNews.NewsSource) -&gt; Swift.Bool in closure #1 (Swift.Result&lt;Swift.Optional&lt;DigitalNews.SourcesModel&gt;, Alamofire.AFError&gt;) -&gt; () in DigitalNews.SourcesRepository.getSources(category: Swift.String, country: Swift.String, completion: (Swift.Result&lt;Swift.Array&lt;DigitalNews.NewsSource&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "DigitalNews"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dmytrohetman/projects/DigitalNews/DigitalNews/Data/Repository/News/SourcesRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "204">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

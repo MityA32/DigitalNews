@@ -8,5 +8,10 @@
 import Foundation
 
 protocol NewsFilterDataTransferDelegate: NSObject {
-    func transferNewsFilterData(category: NewsCategory, country: NewsCountry, sources: [NewsSource])
+    func transferNewsFilterData(
+        category: NewsCategory,
+        country: NewsCountry,
+        sources: [NewsSource],
+        selectedSources: [NewsSource]
+    )
 }

@@ -8,7 +8,6 @@
 import UIKit
 
 final class NewsFiltersScreenViewController: UIViewController {
-
     
     @IBOutlet private weak var newsSourcesTableView: UITableView!
     @IBOutlet private weak var selectNewsCategoryButton: UIButton!
@@ -16,10 +15,12 @@ final class NewsFiltersScreenViewController: UIViewController {
     
     private let viewModel = NewsFiltersScreenViewModel(sourcesRepository: SourcesRepository())
     private let activityIndicator = UIActivityIndicatorView()
+    private let nothingWasFoundLabel = UILabel()
     
     var selectedCategory: NewsCategory?
     var selectedCountry: NewsCountry?
     var selectedSources: [NewsSource]?
+    var sources: [NewsSource]?
     weak var transferFilterDataDelegate: NewsFilterDataTransferDelegate?
     
     override func viewDidLoad() {
@@ -27,11 +28,18 @@ final class NewsFiltersScreenViewController: UIViewController {
         setup()
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+    }
 
     private func setup() {
         viewModel.selectedCategory = selectedCategory
         viewModel.selectedCountry = selectedCountry
         viewModel.selectedSources = selectedSources ?? []
+        viewModel.sources = sources ?? []
         setupCustomBackButton()
         setupTableView()
         setupButtons()
@@ -40,10 +48,32 @@ final class NewsFiltersScreenViewController: UIViewController {
     private func setupTableView() {
         newsSourcesTableView.delegate = self
         newsSourcesTableView.dataSource = self
-        
+        newsSourcesTableView.registerCell(NewsSourcesTableViewCell.self)
+        newsSourcesTableView.allowsMultipleSelection = true
+        setupEmptyTableViewPlaceholder()
         setupActivityIndicator()
+        if viewModel.sources.isEmpty {
+            updateSourcesTable()
+        } else {
+            newsSourcesTableView.reloadData()
+        }
+    }
+    
+    private func setupEmptyTableViewPlaceholder() {
+        nothingWasFoundLabel.translatesAutoresizingMaskIntoConstraints = false
+        nothingWasFoundLabel.text = "No sources found"
+        nothingWasFoundLabel.textAlignment = .center
+        nothingWasFoundLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+        nothingWasFoundLabel.isHidden = true
+        newsSourcesTableView.addSubview(nothingWasFoundLabel)
         
-        updateSourcesTable()
+        NSLayoutConstraint.activate([
+            nothingWasFoundLabel.centerXAnchor.constraint(equalTo: newsSourcesTableView.centerXAnchor),
+            nothingWasFoundLabel.centerYAnchor.constraint(equalTo: newsSourcesTableView.centerYAnchor),
+            nothingWasFoundLabel.widthAnchor.constraint(equalTo: newsSourcesTableView.widthAnchor),
+            nothingWasFoundLabel.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
     }
     
     private func setupActivityIndicator() {
@@ -70,6 +100,7 @@ final class NewsFiltersScreenViewController: UIViewController {
                 viewModel.selectedCategory = category
                 selectNewsCategoryButton.setTitle(category.title, for: .normal)
                 updateSourcesTable()
+                viewModel.selectedSources = []   
             }
         }
         selectNewsCategoryButton.showsMenuAsPrimaryAction = true
@@ -84,6 +115,7 @@ final class NewsFiltersScreenViewController: UIViewController {
                 viewModel.selectedCountry = country
                 selectNewsCountryButton.setTitle(country.name, for: .normal)
                 updateSourcesTable()
+                viewModel.selectedSources = []
             }
         }
         selectNewsCountryButton.showsMenuAsPrimaryAction = true
@@ -94,9 +126,13 @@ final class NewsFiltersScreenViewController: UIViewController {
         activityIndicator.startAnimating()
         viewModel.getSources { [weak self] result in
             switch result {
-                case .success(_):
+                case .success(let data):
+                    
+                    self?.nothingWasFoundLabel.isHidden = !data.isEmpty
+                    
                     self?.newsSourcesTableView.reloadData()
                     self?.activityIndicator.stopAnimating()
+                    
                 case .failure(let failure):
                     print("show Alert: \(failure.localizedDescription)")
             }
@@ -111,12 +147,15 @@ final class NewsFiltersScreenViewController: UIViewController {
     }
 
     @objc func back(sender: UIBarButtonItem) {
-       let sources = viewModel.selectedSources.isEmpty ? viewModel.sources : viewModel.selectedSources
-       transferFilterDataDelegate?
+        let sources = !viewModel.selectedSources.isEmpty ? viewModel.sources :
+                        viewModel.sources.count <= 20 ? viewModel.sources : []
+        let country = (sources.isEmpty && viewModel.selectedSources.isEmpty ? .any : viewModel.selectedCountry) ?? .any
+        transferFilterDataDelegate?
            .transferNewsFilterData(
             category: viewModel.selectedCategory ?? .any,
-            country: viewModel.selectedCountry ?? .any,
-            sources: sources)
+            country: country,
+            sources: sources,
+            selectedSources: viewModel.selectedSources)
     }
 }
 
@@ -125,14 +164,40 @@ extension NewsFiltersScreenViewController: UITableViewDataSource, UITableViewDel
         viewModel.sources.count
     }
     
+    private func configureCellSelection(cell: NewsSourcesTableViewCell, indexPath: IndexPath) {
+        let source = viewModel.sources[indexPath.row]
+        if viewModel.selectedSources.contains(source) {
+            newsSourcesTableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        } else {
+            newsSourcesTableView.deselectRow(at: indexPath, animated: false)
+        }
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = viewModel.sources[indexPath.row].name
+        let cell = newsSourcesTableView.dequeueReusableCell(withIdentifier: NewsSourcesTableViewCell.id, for: indexPath) as! NewsSourcesTableViewCell
+        cell.config(from: viewModel.sources[indexPath.row].name)
+        cell.selectionStyle = .none
+        configureCellSelection(cell: cell, indexPath: indexPath)
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected")
+        if viewModel.selectedSources.count < 20,
+           !viewModel.selectedSources.contains(viewModel.sources[indexPath.row]) {
+            viewModel.selectedSources.append(viewModel.sources[indexPath.row])
+        }
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let sourceIndex = viewModel.selectedSources.firstIndex(of: viewModel.sources[indexPath.row]) {
+            viewModel.selectedSources.remove(at: sourceIndex)
+        }
+    }
+
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        viewModel.selectedSources.count < 20 ? indexPath : nil
     }
     
 }

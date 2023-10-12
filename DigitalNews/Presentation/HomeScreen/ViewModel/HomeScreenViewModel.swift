@@ -18,6 +18,7 @@ final class HomeScreenViewModel {
     var selectedCategory: NewsCategory = .any
     var selectedCountry: NewsCountry = .any
     var selectedSources: [NewsSource] = []
+    var sources: [NewsSource] = []
     
     var favouriteNews: [PieceOfNews] { newsRepository.favouriteNews }
     
@@ -26,11 +27,16 @@ final class HomeScreenViewModel {
     }
     
     func loadMore(for topic: String = "popular", completion: @escaping (Result<[PieceOfNewsModel], Error>) -> Void) {
-        if topic != currentTopic {
-            currentPageNumber = 0
+        let sources = if !selectedSources.isEmpty {
+            selectedSources.map(\.id).joined(separator: ", ")
+        } else {
+            sources.map(\.id).joined(separator: ", ")
         }
-        let sources = selectedSources.isEmpty ? "" : selectedSources.map { $0.id }.joined(separator: ", ")
-        let topic = sources.isEmpty ? topic : ""
+        let topic = if sources.isEmpty && selectedSources.isEmpty { 
+            currentTopic.isEmpty ? "popular" : currentTopic
+        } else {
+            currentTopic == "popular" ? "" : currentTopic
+        }
         newsRepository.getEverythingPortion(topic: topic, sources: sources, pageNumber: currentPageNumber + 1) { [weak self] in
             guard let self else { return }
             switch $0 {

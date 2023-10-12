@@ -27,10 +27,13 @@ final class NewsListTableViewCell: UITableViewCell {
         sourceLabel.text = model.source?.name ?? "unknown source"
         descriptionLabel.text = model.description ?? "No description"
         guard let urlToImage = model.urlToImage else { return }
-        pieceOfNewsImageView.sd_setImage(
-            with: URL(string: urlToImage),
-            placeholderImage: UIImage(named: "icon_news_placeholder")
-        )
+        DispatchQueue.main.async { [weak self] in
+            self?.pieceOfNewsImageView.sd_setImage(
+                with: URL(string: urlToImage),
+                placeholderImage: UIImage(named: "icon_news_placeholder")
+            )
+
+        }
     }
     
     func configSaved(from model: PieceOfNews) {
@@ -41,9 +44,11 @@ final class NewsListTableViewCell: UITableViewCell {
         sourceLabel.text = model.source ?? "unknown source"
         descriptionLabel.text = model.newsDescription ?? "No description"
         guard let urlToImage = model.urlToImage else { return }
-        pieceOfNewsImageView.sd_setImage(
-            with: urlToImage,
-            placeholderImage: UIImage(named: "icon_news_placeholder")
-        )
+        DispatchQueue.main.async { [weak self] in
+            self?.pieceOfNewsImageView.sd_setImage(
+                with: urlToImage,
+                placeholderImage: UIImage(named: "icon_news_placeholder")
+            )
+        }
     }
 }

@@ -11,7 +11,7 @@ struct SourcesModel: Decodable {
     let sources: [NewsSource]
 }
 
-struct NewsSource: Decodable, NewsFilterProtocol {
+struct NewsSource: Decodable, Equatable, NewsFilterProtocol {
     let id: String
     let name: String
     let description: String
