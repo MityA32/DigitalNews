@@ -5,7 +5,7 @@ DigitalNews written app in Swift 5 demonstrating MVVM, using UIKit + CoreData.
 
 # How to run 
 REQUIREMENTS 
-  XCode 14.0+
+  XCode 15.0+
   iOS 15.0+
 
 GETTING STARTED
