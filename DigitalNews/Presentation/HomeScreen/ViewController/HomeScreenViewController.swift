@@ -215,8 +215,6 @@ extension HomeScreenViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
-
-    
 }
 
 extension HomeScreenViewController: NewsFilterDataTransferDelegate {

@@ -19,8 +19,6 @@ struct GetSourcesInstruction: NetworkRequestBodyConvertible {
          URLQueryItem(name: "country", value: country)]
     }
     
-    var parameters: [String : Any]? { nil
-//        ["country" : country, "category" : category]
-    }
+    var parameters: [String : Any]?
     
 }

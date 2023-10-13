@@ -61,7 +61,6 @@ final class NewsRepository: NewsRepositoryProtocol {
                             return newPieceOfNews
                         }
                     
-                    
                     completion(.success(Array(Set(news))))
                 } else {
                     completion(.success([]))
@@ -106,28 +105,7 @@ final class NewsRepository: NewsRepositoryProtocol {
     func remove(_ pieceOfNews: PieceOfNews) {
         coredataService.write {
             coredataService.remove(pieceOfNews)
-            favouriteNews = coredataService.fetch(PieceOfNews.self)
         }
+        favouriteNews = coredataService.fetch(PieceOfNews.self)
     }
-}
-
-private extension NewsRepository {
-    
-    func parsedArticles(from articles: [PieceOfNewsModel]) -> [PieceOfNews] {
-        articles.map { unparsedArticle in
-            coredataService.create(PieceOfNews.self) { article in
-                
-                article.title = unparsedArticle.title
-                article.publishedAt = unparsedArticle.publishedAt?.formattedFromISO8601()
-                article.author = unparsedArticle.author
-                article.source = unparsedArticle.source?.name
-                article.newsDescription = unparsedArticle.description
-                
-                article.url = URL(string: unparsedArticle.url ?? "")
-                article.urlToImage = URL(string: unparsedArticle.urlToImage ?? "")
-
-            }
-        }
-    }
-    
 }

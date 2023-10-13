@@ -110,8 +110,8 @@
             filePath = "DigitalNews/Data/Repository/News/NewsRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "remove(_:)"
             landmarkType = "7">
             <Locations>
@@ -173,8 +173,8 @@
             filePath = "DigitalNews/Data/Repository/News/NewsRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "remove(_:)"
             landmarkType = "7">
             <Locations>
