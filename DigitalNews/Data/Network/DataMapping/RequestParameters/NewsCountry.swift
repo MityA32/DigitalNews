@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NewsCountry: String, CaseIterable, NewsFilterProtocol {
+enum NewsCountry: String, CaseIterable {
 
     case any = ""
     case ae
