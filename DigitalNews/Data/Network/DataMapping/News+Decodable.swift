@@ -11,11 +11,11 @@ struct NewsModel: Decodable {
     let articles: [PieceOfNewsModel]
 }
 
-struct ID<T>: Equatable {
+struct ID<T>: Equatable, Hashable {
     private let value = UUID()
 }
 
-struct PieceOfNewsModel: Decodable, Equatable {
+struct PieceOfNewsModel: Hashable, Decodable, Equatable {
     
     let id = ID<Self>()
     let source: SourceModel?
@@ -26,6 +26,10 @@ struct PieceOfNewsModel: Decodable, Equatable {
     let urlToImage: String?
     let publishedAt: String?
     var isFavourite = false
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
     
     private enum CodingKeys: CodingKey {
         case source

@@ -62,7 +62,7 @@ final class NewsRepository: NewsRepositoryProtocol {
                         }
                     
                     
-                    completion(.success(news))
+                    completion(.success(Array(Set(news))))
                 } else {
                     completion(.success([]))
                 }
