@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NewsCategory: String, CaseIterable, NewsFilterProtocol {
+enum NewsCategory: String, CaseIterable {
 
     case any = ""
     case business

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import OrderedCollections
 
 final class NewsRepository: NewsRepositoryProtocol {
     
@@ -61,7 +62,7 @@ final class NewsRepository: NewsRepositoryProtocol {
                             return newPieceOfNews
                         }
                     
-                    completion(.success(Array(Set(news))))
+                    completion(.success(Array(OrderedSet(news))))
                 } else {
                     completion(.success([]))
                 }
