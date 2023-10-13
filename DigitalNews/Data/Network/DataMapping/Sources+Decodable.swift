@@ -12,6 +12,7 @@ struct SourcesModel: Decodable {
 }
 
 struct NewsSource: Decodable, Equatable, NewsFilterProtocol {
+
     let id: String
     let name: String
     let description: String
@@ -19,4 +20,5 @@ struct NewsSource: Decodable, Equatable, NewsFilterProtocol {
     let category: String
     let language: String
     let country: String
+
 }

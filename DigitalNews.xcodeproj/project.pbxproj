@@ -22,11 +22,11 @@
 		935213D02ACC843600911781 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935213CF2ACC843600911781 /* UIViewController+Extension.swift */; };
 		935213D32ACC87C700911781 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935213D22ACC87C700911781 /* NibLoadable.swift */; };
 		935213D62ACC915C00911781 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935213D52ACC915C00911781 /* HomeScreenViewModel.swift */; };
-		939FDAB72AD874D100755BAE /* AddFavouritePieceOfNewsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939FDAB62AD874D100755BAE /* AddFavouritePieceOfNewsDelegate.swift */; };
+		939FDAB72AD874D100755BAE /* FavouritePieceOfNewsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939FDAB62AD874D100755BAE /* FavouritePieceOfNewsDelegate.swift */; };
 		939FDAB92AD8754100755BAE /* FavouriteNewsScreenDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939FDAB82AD8754100755BAE /* FavouriteNewsScreenDelegate.swift */; };
 		93C6B6D02AD57F640055C162 /* News+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6CF2AD57F640055C162 /* News+Decodable.swift */; };
 		93C6B6D32AD5A33B0055C162 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6D22AD5A33B0055C162 /* CoreDataService.swift */; };
-		93C6B6D72AD5A3C50055C162 /* CoreDatabaseServiceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6D62AD5A3C50055C162 /* CoreDatabaseServiceable.swift */; };
+		93C6B6D72AD5A3C50055C162 /* CoreDataServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6D62AD5A3C50055C162 /* CoreDataServiceProtocol.swift */; };
 		93C6B6DB2AD5ADB10055C162 /* NewsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6DA2AD5ADB10055C162 /* NewsRepository.swift */; };
 		93C6B6DD2AD5B9800055C162 /* AlamoNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6DC2AD5B9800055C162 /* AlamoNetworking.swift */; };
 		93C6B6DF2AD5BA7E0055C162 /* NetworkRequestBodyConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6B6DE2AD5BA7E0055C162 /* NetworkRequestBodyConvertible.swift */; };
@@ -77,11 +77,11 @@
 		935213CF2ACC843600911781 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		935213D22ACC87C700911781 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		935213D52ACC915C00911781 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
-		939FDAB62AD874D100755BAE /* AddFavouritePieceOfNewsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavouritePieceOfNewsDelegate.swift; sourceTree = "<group>"; };
+		939FDAB62AD874D100755BAE /* FavouritePieceOfNewsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePieceOfNewsDelegate.swift; sourceTree = "<group>"; };
 		939FDAB82AD8754100755BAE /* FavouriteNewsScreenDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteNewsScreenDelegate.swift; sourceTree = "<group>"; };
 		93C6B6CF2AD57F640055C162 /* News+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "News+Decodable.swift"; sourceTree = "<group>"; };
 		93C6B6D22AD5A33B0055C162 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
-		93C6B6D62AD5A3C50055C162 /* CoreDatabaseServiceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDatabaseServiceable.swift; sourceTree = "<group>"; };
+		93C6B6D62AD5A3C50055C162 /* CoreDataServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataServiceProtocol.swift; sourceTree = "<group>"; };
 		93C6B6DA2AD5ADB10055C162 /* NewsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRepository.swift; sourceTree = "<group>"; };
 		93C6B6DC2AD5B9800055C162 /* AlamoNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamoNetworking.swift; sourceTree = "<group>"; };
 		93C6B6DE2AD5BA7E0055C162 /* NetworkRequestBodyConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestBodyConvertible.swift; sourceTree = "<group>"; };
@@ -273,7 +273,7 @@
 			children = (
 				935213D22ACC87C700911781 /* NibLoadable.swift */,
 				93C6B71F2AD779A00055C162 /* NewsFilterDataTransferDelegate.swift */,
-				939FDAB62AD874D100755BAE /* AddFavouritePieceOfNewsDelegate.swift */,
+				939FDAB62AD874D100755BAE /* FavouritePieceOfNewsDelegate.swift */,
 				939FDAB82AD8754100755BAE /* FavouriteNewsScreenDelegate.swift */,
 			);
 			path = Protocols;
@@ -372,7 +372,7 @@
 		93C6B6D52AD5A39B0055C162 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				93C6B6D62AD5A3C50055C162 /* CoreDatabaseServiceable.swift */,
+				93C6B6D62AD5A3C50055C162 /* CoreDataServiceProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -692,14 +692,14 @@
 				93C6B7012AD6F42E0055C162 /* Headers.swift in Sources */,
 				935213D02ACC843600911781 /* UIViewController+Extension.swift in Sources */,
 				93C6B6DB2AD5ADB10055C162 /* NewsRepository.swift in Sources */,
-				93C6B6D72AD5A3C50055C162 /* CoreDatabaseServiceable.swift in Sources */,
+				93C6B6D72AD5A3C50055C162 /* CoreDataServiceProtocol.swift in Sources */,
 				93C6B7162AD713E90055C162 /* NewsFiltersScreenViewModel.swift in Sources */,
 				931741772ACC572E003AE7F2 /* DigitalNews.xcdatamodeld in Sources */,
 				93C6B7132AD713CC0055C162 /* NewsFiltersScreenViewController.swift in Sources */,
 				93C6B71D2AD71BD50055C162 /* NewsFilterProtocol.swift in Sources */,
 				93C6B71A2AD716500055C162 /* SourcesRepositoryProtocol.swift in Sources */,
 				93C6B6E72AD5D5640055C162 /* GetNewsInstruction.swift in Sources */,
-				939FDAB72AD874D100755BAE /* AddFavouritePieceOfNewsDelegate.swift in Sources */,
+				939FDAB72AD874D100755BAE /* FavouritePieceOfNewsDelegate.swift in Sources */,
 				93C6B6F02AD607BE0055C162 /* UITableView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

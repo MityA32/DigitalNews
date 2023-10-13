@@ -28,12 +28,6 @@ final class NewsFiltersScreenViewController: UIViewController {
         setup()
         
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
-    }
 
     private func setup() {
         viewModel.selectedCategory = selectedCategory
